@@ -62,7 +62,7 @@ Claude Code 会读取 `.claude-plugin/plugin.json` 并自动发现 `skills/` 目
 ```
 
 Claude Agent 会：
-1. 用 PyMuPDF 提取 PDF 文本 → 保存同名 `.txt` 到 reference 目录
+1. 用 PyMuPDF 提取完整 PDF 文本 → 保存同名 `.txt` 到 reference 目录
 2. 阅读论文内容，按 10 个字段生成结构化笔记
 3. 调用 `append_summary_row.py` 追加到 Excel 总表最后一行
 
@@ -83,19 +83,7 @@ Claude Agent 会：
 每次调用处理 **一篇论文**，追加到总表最后一行。处理多篇时逐条运行，按顺序追加。
 
 ```
-/paper-to-master-table 帮我把 reference/Pre_2024_Graph Neural Networks in Supply Chain Analytics and Optimization.pdf 论文的信息总结到 E:\论文\SUMMARY_backup.xlsx 的第一张表里，内容需要更加详细一些
-```
-
-指定"按顺序追加"以确保追加到现有数据之后：
-
-```
-/paper-to-master-table 帮我把 reference/Wei 等 - 2025 - Response to supply chain network disruption risk through link addition Resilience enhancement strat.pdf 论文的信息总结到 E:\论文\SUMMARY_backup.xlsx 的第一张表按顺序追加里，内容需要更加详细一些
-```
-
-PDF 文件名含中文可以正常识别：
-
-```
-/paper-to-master-table 帮我把 reference/Shen 等 - Resilience inference for supply chains with hypergraph neural network.pdf 论文的信息总结到 E:\论文\SUMMARY_backup.xlsx 的第一张表按顺序追加
+/paper-to-master-table 帮我把 reference/Pre_2024.pdf 论文的信息总结追加到 E:\论文\SUMMARY_backup.xlsx 的第一张表里
 ```
 
 ---
