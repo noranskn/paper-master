@@ -2,7 +2,7 @@
 
 > AI-powered academic paper reading assistant — extract structured notes from PDFs into an Excel master table.
 
-**Paper Master** 是一个 Claude Code Skill，将 PDF 研究论文自动提取为结构化笔记，追加到 Excel 总表中。调用 PyMuPDF 进行 PDF 文本提取，Claude Agent 进行智能论文理解，openpyxl 进行表格写入。
+**Paper Master** 是一个论文阅读与结构化提取框架——将 PDF 研究论文自动提取为结构化笔记，追加到 Excel 总表中。核心工作流不限于特定 AI 平台：PyMuPDF 处理 PDF 文本提取，AI Agent 负责智能论文理解，openpyxl 进行表格写入。本文档以 **Claude Code** 作为示范平台提供开箱即用的 Skill，但 SKILL.md 中的提取规范同样可以适配其他 AI 编码助手（如 Copilot CLI、Gemini CLI 等）。
 
 > **Paper Master 是一个可定制框架**——所有提取字段、输出格式、内容要求都定义在 `SKILL.md` 中。你可以通过修改这个文件来适配自己的需求，比如增减字段、调整摘要结构、改变写作风格等。详见下方 [自定义](#-自定义--customization) 章节。
 
@@ -28,6 +28,8 @@
 ---
 
 ## 🚀 快速开始 / Quick Start
+
+> 以下以 **Claude Code** 为示范平台。Paper Master 的核心规范（`SKILL.md`）同样可适配 Copilot CLI、Gemini CLI 等 AI 编码助手。
 
 ### 1. 安装依赖
 
@@ -128,14 +130,14 @@ Paper Master 是一个**框架，而非固定工具**。所有字段定义、提
 ### 核心思路
 
 ```
-SKILL.md  = 你的需求说明书（用自然语言写给 Claude Agent）
+SKILL.md  = 你的需求说明书（平台无关，自然语言写给 AI Agent）
      ↓
-Claude Agent 阅读后自动按你的规范提取论文信息
+AI Agent（Claude Code / Copilot CLI / Gemini CLI）按规范提取
      ↓
 append_summary_row.py 写入你指定的 Excel 表
 ```
 
-不需要改 Python 代码，**改文档即改行为**。这正是 Claude Code Skill 的设计哲学——用自然语言指令替代硬编码逻辑。
+不需要改 Python 代码，**改文档即改行为**——这正是 AI Agent 时代的配置哲学：用自然语言指令替代硬编码逻辑。`SKILL.md` 是平台无关的提取规范，无论你使用 Claude Code、Copilot CLI 还是 Gemini CLI，核心理念和指令结构均可复用。
 
 ---
 
