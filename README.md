@@ -3,7 +3,8 @@
 > AI-powered academic paper reading assistant — extract structured notes from PDFs into an Excel master table.
 
 **Paper Master** 是一个 Claude Code Skill，将 PDF 研究论文自动提取为结构化笔记，追加到 Excel 总表中。调用 PyMuPDF 进行 PDF 文本提取，Claude Agent 进行智能论文理解，openpyxl 进行表格写入。
-**Paper Master**作为框架，支持自定义需求，即修改md文档自己定制需求。
+
+> **Paper Master 是一个可定制框架**——所有提取字段、输出格式、内容要求都定义在 `SKILL.md` 中。你可以通过修改这个文件来适配自己的需求，比如增减字段、调整摘要结构、改变写作风格等。详见下方 [自定义](#-自定义--customization) 章节。
 
 ---
 
@@ -110,6 +111,34 @@ Excel 总表 (SUMMARY.xlsx)
 
 ---
 
+## 🛠 自定义 / Customization
+
+Paper Master 是一个**框架，而非固定工具**。所有字段定义、提取规则、输出格式都写在 `skills/paper-to-master-table/SKILL.md` 中，Claude Agent 严格按该文档执行。
+
+### 常见定制场景
+
+| 需求 | 修改方式 |
+|------|----------|
+| 增减提取字段 | 修改 SKILL.md 中"总表字段定义"章节，添加/删除字段 |
+| 调整字段格式 | 修改对应字段的输出模板（如摘要三要素改为四要素） |
+| 改变写作风格 | 修改 SKILL.md 中的示例和格式指令（如中文翻译要求） |
+| 适配不同领域 | 修改关键词、相关工作要求、实验指标偏好等 |
+| 调整 Excel 表头 | 修改 `append_summary_row.py` 中 `desired` 列表的列名 |
+
+### 核心思路
+
+```
+SKILL.md  = 你的需求说明书（用自然语言写给 Claude Agent）
+     ↓
+Claude Agent 阅读后自动按你的规范提取论文信息
+     ↓
+append_summary_row.py 写入你指定的 Excel 表
+```
+
+不需要改 Python 代码，**改文档即改行为**。这正是 Claude Code Skill 的设计哲学——用自然语言指令替代硬编码逻辑。
+
+---
+
 ## 📁 目录结构 / Structure
 
 ```
@@ -124,7 +153,7 @@ paper-master/
 │   └── marketplace.json     # Marketplace 信息
 ├── skills/
 │   └── paper-to-master-table/
-│       ├── SKILL.md          # Skill 指令（Claude Agent 遵循的规范）
+│       ├── SKILL.md          # 🔧 核心配置 — 修改此文件即可定制提取规则
 │       └── scripts/
 │           ├── append_summary_row.py   # Excel 追加脚本
 │           └── verify_last_row.py      # 验证工具
