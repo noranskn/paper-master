@@ -39,11 +39,19 @@ pip install PyMuPDF openpyxl
 
 ### 2. 在 Claude Code 中安装本 Skill
 
-将本仓库克隆到本地，在 Claude Code 中加载为插件：
+将仓库克隆到本地后，用 Claude Code 的 `/plugin` 命令安装本地插件：
 
-```
+```bash
 git clone https://github.com/noranskn/paper-master.git
 ```
+
+然后在 Claude Code 对话中输入：
+
+```
+/plugin install /path/to/paper-master
+```
+
+Claude Code 会读取 `.claude-plugin/plugin.json` 并自动发现 `skills/` 目录下的 Skill。安装后即可使用 `/paper-to-master-table` 命令。
 
 ### 3. 使用
 
