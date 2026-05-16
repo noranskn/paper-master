@@ -72,19 +72,19 @@ Claude Agent 会：
 
 ## 📋 使用示例 / Usage Examples
 
-### 单篇论文追加
+每次调用处理 **一篇论文**，追加到总表最后一行。处理多篇时逐条运行，按顺序追加。
 
 ```
 /paper-to-master-table 帮我把 reference/Pre_2024_Graph Neural Networks in Supply Chain Analytics and Optimization.pdf 论文的信息总结到 E:\论文\SUMMARY_backup.xlsx 的第一张表里，内容需要更加详细一些
 ```
 
-### 批量按顺序追加（一篇接一篇）
+指定"按顺序追加"以确保追加到现有数据之后：
 
 ```
 /paper-to-master-table 帮我把 reference/Wei 等 - 2025 - Response to supply chain network disruption risk through link addition Resilience enhancement strat.pdf 论文的信息总结到 E:\论文\SUMMARY_backup.xlsx 的第一张表按顺序追加里，内容需要更加详细一些
 ```
 
-### 追加更多论文
+PDF 文件名含中文可以正常识别：
 
 ```
 /paper-to-master-table 帮我把 reference/Shen 等 - Resilience inference for supply chains with hypergraph neural network.pdf 论文的信息总结到 E:\论文\SUMMARY_backup.xlsx 的第一张表按顺序追加
