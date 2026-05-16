@@ -49,12 +49,12 @@ git clone https://github.com/noranskn/paper-master.git
 
 ```
 我有一个本地自定义 Skill，目录在 /path/to/paper-master/skills/paper-to-master-table/，
-里面的 SKILL.md 是提取规范，scripts/ 是配套的 Python 脚本，请加载这个 Skill 来处理后续论文
+里面的 SKILL.md 是提取规范，scripts/ 是配套的 Python 脚本，要在 Claude Code 中使用本地自定义 Skill
 ```
 
 或者将 Skill 目录配置到 Claude Code 的本地 Skill 搜索路径中（见 Claude Code 文档的 "Custom Skills" 章节）。
 
-**Copilot CLI / Gemini CLI 等**：核心工作流（PyMuPDF 提取 → AI 理解 → openpyxl 写入）和 `scripts/` 下的 Python 脚本是平台无关的。将 `SKILL.md` 中的提取规范适配到你所用平台的 Skill 机制即可。
+**Copilot CLI / Gemini CLI 等**：核心工作流（PyMuPDF 提取 → AI 理解 → openpyxl 写入）类似。
 
 ### 3. 使用
 
