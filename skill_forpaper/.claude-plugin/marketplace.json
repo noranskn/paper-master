@@ -1,0 +1,17 @@
+{
+  "name": "skill-forpaper-dev",
+  "owner": {
+    "name": "noranskn"
+  },
+  "plugins": [
+    {
+      "name": "skill-forpaper",
+      "description": "从 PDF 研究论文中提取结构化笔记，追加到总表 xlsx 文件中",
+      "version": "1.0.0",
+      "source": "./",
+      "author": {
+        "name": "noranskn"
+      }
+    }
+  ]
+}

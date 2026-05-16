@@ -1,0 +1,17 @@
+{
+  "name": "skill-forpaper",
+  "description": "从 PDF 研究论文中提取结构化笔记，追加到总表 xlsx 文件中。包含中英标题、机构作者、发表年份、期刊会议等级、摘要、方法内容、实验、相关工作、自我思考、代码链接等字段。",
+  "version": "1.0.0",
+  "author": {
+    "name": "noranskn"
+  },
+  "keywords": [
+    "paper",
+    "pdf",
+    "research",
+    "论文",
+    "文献管理",
+    "xlsx",
+    "summary"
+  ]
+}
