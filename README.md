@@ -3,6 +3,7 @@
 > AI-powered academic paper reading assistant — extract structured notes from PDFs into an Excel master table.
 
 **Paper Master** 是一个 Claude Code Skill，将 PDF 研究论文自动提取为结构化笔记，追加到 Excel 总表中。调用 PyMuPDF 进行 PDF 文本提取，Claude Agent 进行智能论文理解，openpyxl 进行表格写入。
+**Paper Master**作为框架，支持自定义需求，即修改md文档自己定制需求。
 
 ---
 
