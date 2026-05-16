@@ -37,21 +37,24 @@
 pip install PyMuPDF openpyxl
 ```
 
-### 2. 在 Claude Code 中安装本 Skill
+### 2. 加载 Skill
 
-将仓库克隆到本地后，用 Claude Code 的 `/plugin` 命令安装本地插件：
+**本 Skill 是本地自定义 Skill，非官方插件市场发布。** 你需要克隆整个仓库（包含 `SKILL.md` 和 `scripts/` 下的 Python 脚本）：
 
 ```bash
 git clone https://github.com/noranskn/paper-master.git
 ```
 
-然后在 Claude Code 对话中输入：
+**Claude Code**（推荐示范平台）：在对话中告诉 Claude Code 这是一个本地自定义 Skill：
 
 ```
-/plugin install /path/to/paper-master
+我有一个本地自定义 Skill，目录在 /path/to/paper-master/skills/paper-to-master-table/，
+里面的 SKILL.md 是提取规范，scripts/ 是配套的 Python 脚本，请加载这个 Skill 来处理后续论文
 ```
 
-Claude Code 会读取 `.claude-plugin/plugin.json` 并自动发现 `skills/` 目录下的 Skill。安装后即可使用 `/paper-to-master-table` 命令。
+或者将 Skill 目录配置到 Claude Code 的本地 Skill 搜索路径中（见 Claude Code 文档的 "Custom Skills" 章节）。
+
+**Copilot CLI / Gemini CLI 等**：核心工作流（PyMuPDF 提取 → AI 理解 → openpyxl 写入）和 `scripts/` 下的 Python 脚本是平台无关的。将 `SKILL.md` 中的提取规范适配到你所用平台的 Skill 机制即可。
 
 ### 3. 使用
 
@@ -165,7 +168,7 @@ paper-master/
 - Python ≥ 3.8
 - [PyMuPDF](https://github.com/pymupdf/PyMuPDF) — AGPL 协议，快速 PDF 文本提取
 - [openpyxl](https://openpyxl.readthedocs.io/) — MIT 协议，Excel 读写
-- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) — AI Agent 运行环境
+- AI Agent 运行环境（[Claude Code](https://docs.anthropic.com/en/docs/claude-code) / Copilot CLI / Gemini CLI 等）
 
 ---
 
