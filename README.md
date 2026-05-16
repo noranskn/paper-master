@@ -54,6 +54,38 @@ Claude Agent 会：
 2. 阅读论文内容，按 10 个字段生成结构化笔记
 3. 调用 `append_summary_row.py` 追加到 Excel 总表最后一行
 
+### 4. 在 WPS / Excel 中启用自动换行
+
+由于各字段（摘要、方法、实验等）包含多行内容，需要在表格中启用 **自动换行（Wrap Text）** 才能正确显示：
+
+1. 选中需要换行的列（如标题、摘要、研究方法&内容 等）
+2. 右键 → **设置单元格格式** → **对齐** 选项卡
+3. 勾选 **自动换行（Wrap Text）**
+
+![WPS 自动换行设置](assets/wps-wrap-text.png)
+
+---
+
+## 📋 使用示例 / Usage Examples
+
+### 单篇论文追加
+
+```
+/paper-to-master-table 帮我把 reference/Pre_2024_Graph Neural Networks in Supply Chain Analytics and Optimization.pdf 论文的信息总结到 E:\论文\SUMMARY_backup.xlsx 的第一张表里，内容需要更加详细一些
+```
+
+### 批量按顺序追加（一篇接一篇）
+
+```
+/paper-to-master-table 帮我把 reference/Wei 等 - 2025 - Response to supply chain network disruption risk through link addition Resilience enhancement strat.pdf 论文的信息总结到 E:\论文\SUMMARY_backup.xlsx 的第一张表按顺序追加里，内容需要更加详细一些
+```
+
+### 追加更多论文
+
+```
+/paper-to-master-table 帮我把 reference/Shen 等 - Resilience inference for supply chains with hypergraph neural network.pdf 论文的信息总结到 E:\论文\SUMMARY_backup.xlsx 的第一张表按顺序追加
+```
+
 ---
 
 ## 🧠 工作原理 / How It Works
@@ -84,6 +116,8 @@ paper-master/
 ├── README.md
 ├── LICENSE
 ├── requirements.txt
+├── assets/
+│   └── wps-wrap-text.png     # WPS 自动换行设置截图
 ├── .claude-plugin/
 │   ├── plugin.json          # 插件元数据
 │   └── marketplace.json     # Marketplace 信息
