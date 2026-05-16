@@ -1,12 +1,12 @@
 {
-  "name": "skill-forpaper-dev",
+  "name": "paper-master-marketplace",
   "owner": {
     "name": "noranskn"
   },
   "plugins": [
     {
-      "name": "skill-forpaper",
-      "description": "从 PDF 研究论文中提取结构化笔记，追加到总表 xlsx 文件中",
+      "name": "paper-master",
+      "description": "AI-powered academic paper reading assistant: extract structured notes from PDFs into Excel master table",
       "version": "1.0.0",
       "source": "./",
       "author": {

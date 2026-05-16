@@ -1,6 +1,6 @@
 {
-  "name": "skill-forpaper",
-  "description": "从 PDF 研究论文中提取结构化笔记，追加到总表 xlsx 文件中。包含中英标题、机构作者、发表年份、期刊会议等级、摘要、方法内容、实验、相关工作、自我思考、代码链接等字段。",
+  "name": "paper-master",
+  "description": "AI-powered academic paper reading assistant: extract structured notes from PDF research papers and append to an Excel master table. Supports bilingual title, authors/institutions, venue with ranking, abstract (problem/method/goal), method details, experiments (tools/datasets/metrics), related work, critical reflection, and code availability. Uses PyMuPDF for fast PDF text extraction.",
   "version": "1.0.0",
   "author": {
     "name": "noranskn"
@@ -9,9 +9,12 @@
     "paper",
     "pdf",
     "research",
+    "literature-review",
     "论文",
     "文献管理",
     "xlsx",
-    "summary"
+    "summary",
+    "pymupdf",
+    "academic"
   ]
 }

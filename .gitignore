@@ -1,4 +1,19 @@
+# PDF papers & extracted texts (copyrighted)
 reference/
-1.py/
-.vscode
 
+# IDE
+.vscode/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Temp files
+_temp_*.json
+_append_*.py
+_verify_*.py
+
+# OS
+.DS_Store
+Thumbs.db
