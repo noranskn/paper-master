@@ -127,9 +127,36 @@ description: Extract structured notes from PDF research papers and append new ro
   - `标题 / 作者 / 发表年份 / 期刊或会议 / 摘要 / 研究方法&内容 / 实验 / 相关工作 / 自我思考 / 有无代码`  
   - 若表中列名略有差异，通过"中文关键字+英文关键字"进行模糊匹配；缺失的列自动在最后补上
 
-### 2. 阅读论文重点位置
+### 2. 用 PyMuPDF 提取 PDF 文本（**必须执行，不可跳过**）
 
-从 PDF 中优先抽取：
+**禁止直接读取 PDF 文件。** 必须先用 PyMuPDF（`fitz`）将 PDF 全文提取为 `.txt` 文件，再阅读 `.txt` 文件来获取论文内容。
+
+执行以下 Bash 命令完成提取：
+
+```bash
+python -c "
+import fitz, os
+pdf_path = r'<PDF完整路径>'
+out_path = os.path.join(os.path.dirname(pdf_path), os.path.splitext(os.path.basename(pdf_path))[0] + '.txt')
+doc = fitz.open(pdf_path)
+pages = len(doc)
+text = []
+for i in range(pages):
+    t = doc[i].get_text()
+    text.append(f'--- Page {i+1} ---\n{t}')
+with open(out_path, 'w', encoding='utf-8') as f:
+    f.write('\n'.join(text))
+print(f'Pages: {pages}, Saved: {out_path}, Size: {os.path.getsize(out_path)} bytes')
+"
+```
+
+- 输出路径：与 PDF 同目录、同文件名（扩展名 `.txt`），存放于 `reference/` 目录下
+- 若用户已有同名 `.txt` 且确认未过期，可跳过提取，直接读取已有 `.txt`
+- **如果 `import fitz` 失败**（PyMuPDF 未安装）：提示用户运行 `pip install PyMuPDF` 后再重试
+
+### 3. 阅读论文重点位置
+
+从步骤 2 生成的 `.txt` 文件中优先抽取：
 
 - 首页：标题、作者、机构/学校、期刊/会议名称、DOI、发表/接收时间
 - 信息栏：年份与月份（用来构造 `YYYY.MM`）
@@ -139,7 +166,7 @@ description: Extract structured notes from PDF research papers and append new ro
 - 相关工作章节：按点提炼出 3–6 条代表性工作
 - 文末"Data availability / Code availability / Acknowledgements"等：用来判断是否给出代码链接
 
-### 3. 信息抽取与格式化
+### 4. 信息抽取与格式化
 
 - 标题：  
   - 保留原文英文标题  
@@ -170,7 +197,7 @@ description: Extract structured notes from PDF research papers and append new ro
 - 有无代码：  
   - 如有链接直接写链接；无则写 `论文中无`
 
-### 4. 追加到总表第一张表
+### 5. 追加到总表第一张表
 
 - 在用户指定的 xlsx/csv 文件的 **第一张表** 中：
   - 若首行表头为空，则自动填入上述字段中文名作为表头  
@@ -182,7 +209,7 @@ description: Extract structured notes from PDF research papers and append new ro
   python <PLUGIN_DIR>/skills/paper-to-master-table/scripts/append_summary_row.py --xlsx "<用户指定xlsx路径>" --data-json '<JSON字符串>'
   ```
 
-### 5. 对用户的输出
+### 6. 对用户的输出
 
 对每次调用，输出两块信息：
 
