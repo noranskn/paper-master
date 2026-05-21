@@ -61,7 +61,7 @@ git clone https://github.com/noranskn/paper-master.git
 在 Claude Code 对话中：
 
 ```
-/paper-to-master-table 帮我把 reference/my-paper.pdf 论文信息总结到 E:\论文\SUMMARY.xlsx 第一张表
+用/paper-to-master-table 这个我本地安装的skill帮我把 reference/my-paper.pdf 论文信息总结到 E:\论文\SUMMARY.xlsx 第一张表
 ```
 
 Claude Agent 会：
